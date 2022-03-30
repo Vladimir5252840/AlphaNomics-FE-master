@@ -1,0 +1,158 @@
+@import './theme.scss';
+
+
+// Padding
+@mixin padding($key, $value) {
+  .pd-#{$key} {
+    padding: $value;
+  }
+  .pd-t-#{$key} {
+    padding-top: $value;
+  }
+  .pd-b-#{$key} {
+    padding-bottom: $value;
+  }
+  .pd-l-#{$key} {
+    padding-left: $value;
+  }
+  .pd-r-#{$key} {
+    padding-right: $value;
+  }
+  .pd-t-b-#{$key} {
+    padding: $value 0;
+  }
+  .pd-l-r-#{$key} {
+    padding: 0 $value;
+  }
+}
+
+// Margin
+@mixin margin($key, $value) {
+  .mr-#{$key} {
+    margin: $value;
+  }
+  .mr-t-#{$key} {
+    margin-top: $value;
+  }
+  .mr-b-#{$key} {
+    margin-bottom: $value;
+  }
+  .mr-l-#{$key} {
+    margin-left: $value;
+  }
+  .mr-r-#{$key} {
+    margin-right: $value;
+  }
+  .mr-t-b-#{$key} {
+    margin: $value 0;
+  }
+  .mr-l-r-#{$key} {
+    margin: 0 $value;
+  }
+}
+
+// Border 
+@mixin border-type($key, $color: $border-color-base, $border-width: $border-width-base) {
+  @if $key == "" {
+    .border {
+      border: $border-width $border-style-base $color !important;
+    }
+    .border-top {
+      border-top: $border-width $border-style-base $color !important;
+    }
+    .border-bottom {
+      border-bottom: $border-width $border-style-base $color !important;
+    }
+    .border-left {
+      border-left: $border-width $border-style-base $color !important;
+    }
+    .border-right {
+      border-right: $border-width $border-style-base $color !important;
+    }  
+  } @else {
+    .border-#{$key} {
+      border: $border-width $border-style-base $color !important;
+    }
+    .border-top-#{$key} {
+      border-top: $border-width $border-style-base $color !important;
+    }
+    .border-bottom-#{$key} {
+      border-bottom: $border-width $border-style-base $color !important;
+    }
+    .border-left-#{$key} {
+      border-left: $border-width $border-style-base $color !important;
+    }
+    .border-right-#{$key} {
+      border-right: $border-width $border-style-base $color !important;
+    }
+  }   
+}
+
+// Button 
+@mixin button-color($bg-color: $background-color-base, $color: $black, $text-color: $black, $type: "default") {
+  @if $type == "default" {
+    background: $bg-color;
+    // &:hover,
+    // &:focus {
+    //   background: $bg-color;
+    //   border-color: $color;
+    //   color: $color;
+    //   opacity: .8;
+    // }
+    .anticon {
+      font-size: $font-size-base!important;
+    }
+    .icon {
+      font-size: $font-size-base !important;
+      color: $color;
+    }
+    .icon + span {
+      margin-left: $margin-xs;
+    }
+    .ant-btn-loading-icon {
+      .anticon {
+        line-height: $line-height-base;
+      } 
+    }
+  } @else {
+    text-shadow: none;
+    box-shadow: none;
+    color: $text-color;
+    background: $bg-color;
+    border-color: darken($color, 10%);
+    &:hover,
+    &:focus {
+      border-color: darken($color, 10%);
+      background: $bg-color;
+      color: $text-color;
+    }
+    .anticon {
+      color: $text-color !important;
+    }
+    .icon {
+      color: $text-color !important;
+    }
+  }
+}
+
+// Ghost Button Color
+@mixin ghost-button-color($color: $black, $text-color: $black, $type: "default") {
+  border-color: $color;
+  color: $color;
+  .icon,
+  .anticon {
+    color: $color !important;
+  }
+  &:hover {
+    @if $type == "default" {
+      opacity: .7;
+    } @else {
+      background: $color !important;
+      color: $text-color;
+      .icon,
+      .anticon {
+        color: $text-color !important;
+      }
+    }
+  }
+}
